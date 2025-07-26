@@ -3,7 +3,7 @@ version: '3.9'
 services:
   db:
     image: postgres:13
-    container_name: myproject-postgres
+    container_name: prueba-postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
@@ -13,7 +13,7 @@ services:
 
   web:
     build: .
-    container_name: myproject-web
+    container_name: prueba-pweb-django
     command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/app/static
@@ -26,7 +26,8 @@ services:
       - django-net
       - general-net  # <--- Aquí agregamos la red de NPM
     expose:
-      - "8000"
+      - "8001"
+
 
 volumes:
   postgres_data:
