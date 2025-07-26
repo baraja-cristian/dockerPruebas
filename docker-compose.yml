@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:13
+    container_name: myproject-postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
@@ -10,6 +11,7 @@ services:
 
   web:
     build: .
+    container_name: myproject-web
     command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/app/static
@@ -21,12 +23,4 @@ services:
     networks:
       - django-net
     expose:
-      - "8000"   # Exponemos solo internamente, sin mapear puerto al host
-
-volumes:
-  postgres_data:
-  static_volume:
-  media_volume:
-
-networks:
-  django-net:
+      - "8000"
