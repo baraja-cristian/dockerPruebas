@@ -14,7 +14,7 @@ services:
   web:
     build: .
     container_name: prueba-pweb-django
-    command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn configApp.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
