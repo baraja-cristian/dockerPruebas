@@ -24,6 +24,7 @@ services:
       - db
     networks:
       - django-net
+      - nginxproxymanager_default  # <--- Aquí agregamos la red de NPM
     expose:
       - "8000"
 
@@ -35,3 +36,5 @@ volumes:
 networks:
   django-net:
     driver: bridge
+  nginxproxymanager_default:        # <--- Declaramos que es una red externa
+    external: true
