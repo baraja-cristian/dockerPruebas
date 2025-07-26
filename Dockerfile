@@ -13,4 +13,4 @@ RUN pip install -r requirements.txt
 
 COPY . /app/
 
-RUN mkdir -p /app/static /app/media
+RUN mkdir -p /app/staticfiles /app/media
